@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Jabr Maktabi</title>
+    <link rel="stylesheet" href="al.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="al.js"></script>
+</head>
+<body>
+  
+    
+    <nav style="font-size: 22px;" class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="font-size: 30px;" href="#">Al-Jabr</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="video.html">Videolar</a>
+              <a class="nav-link" href="gallery.html">Gallereya</a>
+              <a class="nav-link" href="#three">Rahbarimiz</a>
+              <a class="nav-link disabled" aria-disabled="true"></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+   
+    <section id="home">
+       
+        <img src="channels4_banner (1).jpg" alt="Maktab" class="hero-image">
+      
+    </section>
+
+    
+   
+
+  
+    
+        <style>
+            
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                color: #333;
+                text-align: center;
+                padding: 20px;
+                margin: 0;
+            }
+    
+            h1 {
+                color: #4CAF50;
+            }
+    
+            .subject-list {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap; 
+                margin-top: 30px;
+            }
+    
+            .subject-card {
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 50px;
+                width: 250px;
+                cursor: pointer;
+                transition: transform 0.3s;
+                margin: 10px;
+            }
+    
+            .subject-card:hover {
+                transform: scale(1.1);
+            }
+    
+            .subject-card h2 {
+                font-size: 24px;
+                color: #555;
+            }
+    
+            .subject-card p {
+                font-size: 10px;
+                color: #777;
+            }
+    
+          
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                justify-content: center;
+                align-items: center;
+            }
+    
+            .modal-content {
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 8px;
+                max-width: 500px;
+                width: 80%;
+            }
+    
+            .modal-content h2 {
+                color: #4CAF50;
+            }
+    
+            .modal-content p {
+                font-size: 18px;
+                color: #333;
+            }
+    
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 25px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+    
+          
+            @media (max-width: 768px) {
+                .subject-card {
+                    width: 120px; }
+    
+                .modal-content {
+                    padding: 20px;
+                }
+    
+                .subject-card h2 {
+                    font-size: 22px;
+                }
+    
+                .subject-card p {
+                    font-size: 16px;
+                }
+            }
+    
+            @media (max-width: 480px) {
+                .subject-card {
+                    width: 150px;
+                }
+    
+                .subject-card h2 {
+                    font-size: 20px;
+                }
+    
+                .subject-card p {
+                    font-size: 14px;
+                }
+    
+                .modal-content {
+                    padding: 15px;
+                }
+            }
+        </style>
+   
+        <h1>Asosiy Fanlar</h1>
+        <div class="subject-list">
+            <div class="subject-card" data-subject="Matematika">
+                <h2>Matematika</h2>
+              
+            </div>
+            <div class="subject-card" data-subject="Bugalteriya">
+                <h2>Bugalteriya</h2>
+               
+            </div>
+            <div class="subject-card" data-subject="IT">
+                <h2>IT</h2>
+                
+            </div>
+            <div class="subject-card" data-subject="Ingliz Tili">
+                <h2>Ingliz Tili</h2>
+              
+            </div>
+        </div>
+    
+       
+        <div class="modal" id="myModal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    
+        <script>
+            const subjectCards = document.querySelectorAll('.subject-card');
+            const modal = document.getElementById('myModal');
+            const closeModal = document.getElementById('closeModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+    
+            const subjectDetails = {
+                "Matematika": "Matematika fanlari algebra, geometriya, trigonometriya, statistikaga asoslanadi.",
+                "Bugalteriya": "halqaro va milliy sertifikatlarga ega bolish",
+                "IT": "darsturlash kodlari java script html css java pyton ",
+                "Ingliz Tili": "Ingliz tili grammatika, IELTS va CEFR sertifikatlariga tayorlov"
+            };
+    
+            subjectCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const subjectName = this.getAttribute('data-subject');
+                    modalTitle.textContent = subjectName;
+                    modalDescription.textContent = subjectDetails[subjectName];
+                    modal.style.display = 'flex';
+                });
+            });
+    
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+    
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        </script>
+    </body>
+    </html>
+    
+    
+
+    
+    <section id="two">
+        <h2>Galereya</h2>
+        <div class="gallery">
+           <img src="kk.jpg" alt="">
+            <img src="ll.jpg" alt="O'quvchilarning tadqiqotlari">
+            <img src="pp.jpg" alt="Maktabdagi tadbir">
+        </div>
+      
+    </section>
+
+
+
+    <section id="three">
+        <h2>Direktorimiz Haqida</h2>
+        <div class="director-profile">
+            <img src="cc.jpg" alt="Direktor Matluba Axrarovna" class="director-photo">
+            <div class="director-details">
+                
+                <h3>Matluba Axrarovna</h3>
+                <p>Al Jabr Maktabining direktori, ta'lim va boshqaruv sohasida katta tajribaga ega. Matluba Axrarovna, o'zining ilg'or pedagogik yondashuvlari bilan maktabni rivojlantirish va o'quvchilarga sifatli ta'lim berish borasida samarali ishlar olib bormoqda.</p>
+    
+        
+                <p>Matluba Axrorovna o‘zining ustozlik va rahbarlik fazilatlari bilan o‘quvchilarning rivojlanishida muhim rol o‘ynaydi. Uning boshqaruvida bo‘lgan o‘quvchilarning bilimga bo‘lgan muhabbati va ishtiyoqi yanada ortadi, va ular kelajakda o‘z orzulariga yetishish uchun mustahkam poydevor quradilar.</p>
+    
+                <h4>Direktorimizning xabarlaridan:</h4>
+                <p><em>"Al Jabr Maktabida biz o'quvchilarni faqat bilim bilan emas, balki tarbiyali bolishigayam harakat Har bir o'quvchi biz uchun qadrli va uning muvaffaqiyati bizning yutug'imizdir."</em></p>
+            </div>
+        </div>
+    </section>
+    
+
+
+  
+   
+
+</body>
+</html>
